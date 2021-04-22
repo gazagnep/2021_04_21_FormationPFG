@@ -1,0 +1,118 @@
+{
+  "tchatUsers": [
+    {
+      "login": "alex",
+      "img": "img/alex.png",
+      "id": 1
+    },
+    {
+      "login": "user1",
+      "img": "img/face1.jpg",
+      "id": 2
+    },
+    {
+      "login": "user2",
+      "img": "img/face2.jpeg",
+      "id": 3
+    },
+    {
+      "login": "user3",
+      "img": "img/face3.jpg",
+      "id": 4
+    },
+    {
+      "login": "user4",
+      "img": "img/face4.jpg",
+      "id": 5
+    },
+    {
+      "login": "user5",
+      "img": "img/face5.jpeg",
+      "id": 6
+    },
+    {
+      "login": "master",
+      "img": "img/faceful.jpeg",
+      "id": 7
+    },
+    {
+      "login": "new",
+      "id": 8
+    },
+    {
+      "login": "Micael",
+      "img": "img/faceful.jpeg",
+      "id": 9
+    },
+    {
+      "login": "hui",
+      "img": "img/face4.jpg",
+      "id": 10
+    },
+    {
+      "login": "cedric",
+      "img": "img/faceful.jpeg",
+      "id": 11
+    },
+    {
+      "login": "Pierre",
+      "img": "img/face1.jpeg",
+      "id": 12
+    },
+    {
+      "login": "nicoooo",
+      "img": "img/face5.jpeg",
+      "id": 13
+    },
+    {
+      "login": "nicoD",
+      "img": "img/faceful.jpeg",
+      "id": 14
+    },
+    {
+      "login": "Champix",
+      "img": "img/faceful.jpeg",
+      "id": 15
+    },
+    {
+      "login": "Mehdi",
+      "img": "img/test.jpg",
+      "id": 16
+    },
+    {
+      "login": "PFG",
+      "img": "img/faceful.jpeg",
+      "id": 17
+    },
+    {
+      "login": "Simon",
+      "img": "img/face4.jpg",
+      "id": 18
+    },
+    {
+      "login": "max",
+      "img": "img/faceful.jpeg",
+      "id": 19
+    }
+  ],
+  "messages": [
+    {
+      "id": 0,
+      "text": "Hello",
+      "dest": -1,
+      "color": "#ACACAC"
+    },
+    {
+      "id": 1,
+      "text": "GoodBye",
+      "dest": -1,
+      "color": "#FAACBE"
+    },
+    {
+      "text": "Hello",
+      "dest": -1,
+      "color": "#FFACBE",
+      "id": 2
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+.Tchat {}
+.horizontal{
+    display: flex;
+    flex-direction: row;
+    width: 100vw; //View West
+    height: calc(100vh - 40px);
+    background-color: skyblue;
+    padding-left: 10px 20px;
+}
