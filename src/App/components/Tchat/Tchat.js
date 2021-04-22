@@ -5,6 +5,8 @@ import TchatUsers from '../TchatUsers/TchatUsers';
 import TchatWriter from '../TchatWriter/TchatWriter';
 import styleMedia from './Tchat.module.scss'
 import { REST_ADDR } from '../../config/config';
+import store from '../../reducers/store';
+
 const initialState = { messages: [], tchatUsers: [] }
 
 class Tchat extends Component {
@@ -14,7 +16,7 @@ class Tchat extends Component {
   }
 
   componentDidMount(){
-    fetch(`${REST_ADDR}/tchatUsers`)
+    fetch(`${REST_ADDR}/tchatUsers/`)
       .then(f=>f.json(),f=>{console.log(f);return []})
       .then(jsonArr=> {
         this.setState({tchatUsers:jsonArr}); 

@@ -4,7 +4,7 @@ import styles from './TchatUsers.module.scss';
 
 const TchatUsers = (props) => (
   <div className={styles.TchatUsers} data-testid="TchatUsers">
-    {props.users.map(e=>)}
+    TchatUsers Component
   </div>
 );
 
