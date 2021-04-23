@@ -1,1 +1,14 @@
-.TchatUser {}
+.TchatUser {
+    padding: 10px;
+}
+.TchatUser img {
+    height:60px;
+    display: inline;
+}
+.TcchatUser * {
+    vertical-align: middle;
+    font-size: 32px;
+}
+.TchatUser:hover {
+    background-color: tomato;
+}

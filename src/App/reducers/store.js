@@ -1,16 +1,19 @@
 import {createStore, combineReducers} from 'redux'; //combineReducers =>
 import { REST_ADDR } from '../config/config';
 
-const initialState={
+export const initialState={
     messages:[],
-    tchatUsers:[]
+    tchatUsers:[],
+    selectedDestId:-1,
+    connectedUser:null
 }
 
 export const TCHAT_ACTIONS=Object.freeze({
     ADD_USER:'ADD_USER',
     ADD_USERS:'ADD_USERS',
     ADD_MESSAGES:'ADD_MESSAGES',
-    SEND_MESSAGE:'SEND_MESSAGE'
+    SEND_MESSAGE:'SEND_MESSAGE',
+    SELECT_DEST:'SELECT_DEST'
 });
 
 const TCHAT_PRIVATE_ACTIONS=Object.freeze({
@@ -33,15 +36,25 @@ function tchatReducer(state=initialState,action) {
             fetch(`${REST_ADDR}/tchatUsers`).then(f=>f.json()).then(o=>{
                 store.dispatch({type:TCHAT_ACTIONS.ADD_USERS,values:o});
             })
-            setInterval(()=>{store.dispatch({type:TCHAT_PRIVATE_ACTIONS.PULLING})},2000);//INIT_PULLING (dispatch not available in INIT)
+            setInterval(()=>{store.dispatch({type:TCHAT_PRIVATE_ACTIONS.PULLING})},20000);//INIT_PULLING (dispatch not available in INIT)
             return state;
         case TCHAT_ACTIONS.ADD_USER:return {...state,tchatUser:[...state.tchatUsers,action.value]};
         case TCHAT_ACTIONS.ADD_USERS:return {...state,tchatUsers:[...state.tchatUsers,...action.values]};
         case TCHAT_ACTIONS.ADD_MESSAGES:return {...state,messages:[...state.messages,...action.values]};
         case TCHAT_ACTIONS.SEND_MESSAGE:
-            fetch(`${REST_ADDR}`,{method:'POST',body:JSON.stringify(action.value)})
+            fetch(`${REST_ADDR}`,{
+                method:'POST',
+                body:JSON.stringify(action.value),
+                headers: {
+                    'Content-Type': 'application/json' // 'Content-Type': 'application/x-www-form-urlencoded',
+                }
+            })
             .then(f=>{console.log(f)},f=>{console.log(f)})
             return {...state, messages: [...state.messages, action.value]};
+
+        case TCHAT_ACTIONS.SELECT_DEST:
+            return {...state,selectedDestId:action.value};
+
         // case TCHAT_PRIVATE_ACTIONS.INIT_PULLING:
         //     setInterval(()=>{store.dispatch({type:TCHAT_PRIVATE_ACTIONS.PULLING})},2000)
         //     return state;

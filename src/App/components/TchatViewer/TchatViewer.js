@@ -2,34 +2,17 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './TchatViewer.module.scss';
 import { REST_ADDR } from '../../config/config.js';
-
+import store,{initialState} from '../../reducers/store';
 const TchatViewer = (props) => {
-  const [messages, setmessages] = useState([]);
-  const [lastId, setlastId] = useState(-1);;
-  const [fetchCount, setFetchCount] = useState(0)
+  const [messages, setmessages] = useState(initialState.messages);
+  //const [messages, setmessages] = useState([]);
+  // const [lastId, setlastId] = useState(-1);;
+  // const [fetchCount, setFetchCount] = useState(0)
   //component did mount avec[] ref de changement vide
   useEffect(() => {
-    fetch(`${REST_ADDR}/messages?id_gte=${lastId + 1}`)
-      .then(flux => flux.json(), flux => { console.log(flux); return [] })
-      .then(jsonArr => {
-        setTimeout(() => setFetchCount(fetchCount + 1), 3000);
-        if (jsonArr.length <= 0) {
-          return jsonArr;
-        }
-        let last = lastId;
-        jsonArr.forEach(e => {
-          if (last < e.id) {
-            last = e.id
-          }
-        })
-        if (lastId < last) {
-          setlastId(last);
-        }
-        console.log('message initialement recus', jsonArr)
-        setmessages([...messages, ...jsonArr]);
-        return jsonArr;
-      })
-  }, [fetchCount]);
+    setmessages(store.getState().messages);
+    store.subscribe(()=>setmessages(store.getState().messages))
+  }, []);
 
   return (<div className={styles.TchatViewer} data-testid="TchatViewer">
     {messages.map((e, i) => <div className="message" key={'message-' + i}>
